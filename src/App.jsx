@@ -6,13 +6,14 @@ import Offers from "./Container/Offers"
 import SignIn from "./Container/SignIn"
 import SignUp from "./Container/SignUp"
 import Profile from "./Container/Profile"
+import Header from "./Component/Header";
 
 function App() {
   return (
     <>
       <Router>
-        <Routes>
-          
+        <Header />
+        <Routes>      
           <Route path="/" element={<Home />} />
           <Route path='/profile' element={<Profile/>} />
           <Route path='/sign-in' element={<SignIn/>} />
