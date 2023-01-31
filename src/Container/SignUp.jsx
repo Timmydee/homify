@@ -2,6 +2,14 @@ import React, {useState} from 'react'
 import { Link } from "react-router-dom";
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai";
 import Oauth from '../Component/Oauth';
+import {db} from '../firebase';
+
+import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
+import { serverTimestamp, setDoc, doc} from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify';
+
+
 
 
 export default function SignUp() {
@@ -14,6 +22,7 @@ export default function SignUp() {
   })
 
   const {name, email, password} = formData;
+  const navigate = useNavigate();
 
   function onChang(e) {
     console.log(e.target.value)
@@ -21,6 +30,33 @@ export default function SignUp() {
       ...prevState,
       [e.target.id]: e.target.value, 
     }))
+  }
+
+  async function onSubmit(e){
+    e.preventDefault()
+
+    try {
+      const auth = getAuth()
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+
+      updateProfile(auth.currentUser, {
+        displayName: name
+      })
+      const user = userCredential.user;
+      const formDataCopy = {...formData}
+      delete formDataCopy.password;
+      formDataCopy.timeStamp = serverTimestamp(); //time from firebase
+
+      console.log(user)
+
+      // await setDoc(doc(db, "users", user.uid), formDataCopy)
+      await setDoc(doc(db, "users", user.uid), formDataCopy); //adding user to the database
+
+      navigate("/") //navigate to home page
+    } catch (error) {
+      console.log(error)
+      toast.error("Something went wrong TRY AGAIN")
+    }
   }
 
   function passwordEye() {
@@ -41,7 +77,7 @@ export default function SignUp() {
         </div>
         {/* max-w-xs */}
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-          <form>
+          <form onSubmit={onSubmit}>
             <input 
               className='w-full mb-6 px-4 py-2 text-xl text-gray-700 transition ease-in-out border-gray-300 rounded bg-white' 
               type="text" 
