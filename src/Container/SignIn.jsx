@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai";
 import Oauth from '../Component/Oauth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 
 export default function SignIn() {
@@ -13,6 +16,7 @@ export default function SignIn() {
   })
 
   const {email, password} = formData;
+  const navigate = useNavigate();
 
   function onChang(e) {
     console.log(e.target.value)
@@ -26,6 +30,20 @@ export default function SignIn() {
     setShowPasswd(prevState => !prevState)
   }
 
+  async function onSubmit(e){
+    e.preventDefault();
+    try{
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(auth,email,password)
+
+      if(userCredential.user) {
+        navigate("/")
+      }
+    } catch(error){
+      toast.error("wrong login details")
+    }
+  }
+  
   return (
     <section>
       <h1 className='text-3xl text-center mt-6 font-bold'>Sign in</h1>
@@ -40,7 +58,7 @@ export default function SignIn() {
         </div>
         {/* max-w-xs */}
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-          <form>
+          <form onSubmit={onSubmit}>
             <input 
               className='w-full mb-6 px-4 py-2 text-xl text-gray-700 transition ease-in-out border-gray-300 rounded bg-white' 
               type="email" 

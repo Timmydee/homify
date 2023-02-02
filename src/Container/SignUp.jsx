@@ -1,15 +1,16 @@
 import React, {useState} from 'react'
-import { Link } from "react-router-dom";
-import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai";
 import Oauth from '../Component/Oauth';
-import {db} from '../firebase';
-
-import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
-import { serverTimestamp, setDoc, doc} from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
-import {toast} from 'react-toastify';
-
-
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { db } from "../firebase";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 export default function SignUp() {
