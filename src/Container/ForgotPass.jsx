@@ -1,6 +1,9 @@
 
+import { async } from '@firebase/util';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import React, {useState} from 'react'
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 import Oauth from '../Component/Oauth';
 
 
@@ -10,11 +13,35 @@ export default function ForgotPass() {
 
   function onChang(e) {
     console.log(e.target.value)
-    setFormData((prevState) => ({
-      ...prevState,
-      email: e.target.value, 
-    }))
+    setEmail(e.target.value)
+    // setFormData((prevState) => ({
+    //   ...prevState,
+    //   email: e.target.value, 
+    // }))
   }
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Email was sent");
+    } catch (error) {
+      toast.error("Could not send reset password");
+    }
+  }
+
+  // async function onSubmit(e){
+  //   e.preventDefault();
+  //   try{
+  //     const auth = getAuth();
+  //     await sendPasswordResetEmail(auth, email)
+  //     toast.success("Email was sent successfully")
+
+  //   } catch(error){
+  //     toast.error("Invalid Email Address")
+  //   }
+  // }
 
   return (
     <section>
@@ -30,7 +57,7 @@ export default function ForgotPass() {
         </div>
         {/* max-w-xs */}
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-          <form>
+          <form onSubmit={onSubmit}>
             <input 
               className='w-full mb-6 px-4 py-2 text-xl text-gray-700 transition ease-in-out border-gray-300 rounded bg-white' 
               type="email" 
