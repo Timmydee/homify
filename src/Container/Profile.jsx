@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { useState } from 'react'
 import {getAuth, updateProfile} from 'firebase/auth'
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { doc, updateDoc } from 'firebase/firestore';
 import {db} from "../firebase"
+import { FcHome } from 'react-icons/fc';
 
 export default function Profile() {
   const auth = getAuth();
@@ -55,28 +57,7 @@ export default function Profile() {
     } catch (error) {
       toast.error("Could not update the profile details");
     }
-  }
-
-  // async function onSubmit() {
-    
-  //   try{
-  //     if(auth.currentUser.displayName !== name){
-  //       //update display name in fbase auth
-  //       await updateProfile(auth.currentUser, {
-  //         displayName: name,
-  //       });
-
-  //       //update in fstore
-  //       const docRef = doc(db, "users" , auth.currentUser.uid);
-  //       await updateDoc(docRef, {
-  //         name,
-  //       })     
-  //     }
-  //     toast.success("changed sucessfully")
-  //   } catch(error) {
-  //     toast.error("Cant change name now try again later")
-  //   }
-  // }
+  }    
   
 
   return (
@@ -102,23 +83,32 @@ export default function Profile() {
             disabled = {!currentChange}
             className="w-full border border-gray-300 rounded mt-6 px-4 py-2 transition ease-in-out"
           />
-        </form>
+        
 
-        <div className='flex justify-between mt-4 whitespace-nowrap text-sm sm:text-lg mb-6'>
-          <p className='flex items-center'>
-            Do you want to make changes? 
-            <span 
-              onClick={Change}
-              
-              className="text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer"
-            > 
-              {currentChange ? "Apply Change" : "Edit"}
-            </span>
-          </p>
-          <p onClick={logout} className='text-blue-600 hover:text-blue-800 transition cursor-pointer ease-in-out duration-200'>
-            Sign Out
-          </p>
-        </div>
+          <div className='flex justify-between mt-4 whitespace-nowrap text-sm sm:text-lg mb-6'>
+            <p className='flex items-center'>
+              Do you want to make changes? 
+              <span 
+                onClick={Change}
+                
+                className="text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer"
+              > 
+                {currentChange ? "Apply Change" : "Edit"}
+              </span>
+            </p>
+            <p onClick={logout} className='text-blue-600 hover:text-blue-800  transition cursor-pointer ease-in-out duration-200'>
+              Sign Out
+            </p>
+          </div>
+        </form>
+        <button type='submit' className='w-full bg-blue-700 hover:bg-blue-900 transition delay-200 ease-in-out py-3
+           text-white font-medium text-sm hover:shadow-lg active:bg-blue-800 rounded'>
+            <Link to="/create-list">
+              {/* <FcHome/> */}
+              List a House for sell
+            </Link>
+          
+        </button>
       </div>
     </div>
   )
