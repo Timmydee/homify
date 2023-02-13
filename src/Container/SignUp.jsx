@@ -40,9 +40,11 @@ export default function SignUp() {
       const auth = getAuth()
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
 
+      //to include the name 
       updateProfile(auth.currentUser, {
         displayName: name
       })
+      //adding details to firestore
       const user = userCredential.user;
       const formDataCopy = {...formData}
       delete formDataCopy.password;
