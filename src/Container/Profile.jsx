@@ -95,6 +95,20 @@ export default function Profile() {
     fetchUserListings();
   }, [auth.currentUser.uid]);
   
+  async function onDelete(listingID){
+    if(window.confirm("Are you sure you wanna delete this listing")) {
+      await deleteDoc(doc(db, "listings", listingID));
+      const updateListings = listings.filter(
+        (listing) => listing.id !== listingID
+      );
+      setListings(updateListings)
+      toast.success("successfully deleted")
+    }
+  }
+
+  function onEdit(){
+
+  }
 
   return (
     <>
@@ -162,6 +176,8 @@ export default function Profile() {
                   key={listing.id}
                   id={listing.id}
                   listing={listing.data} 
+                  onDelete={()=>onDelete(listing.id)}
+                  onEdit = {() => onEdit(listing.id)}
                 />
               ))}
             </ul>
