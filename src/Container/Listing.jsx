@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Spinner from '../Component/Spinner';
 import { db } from "../firebase";
+import {FaShare} from 'react-icons/fa'
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,6 +20,8 @@ const Listing = () => {
     const params = useParams();
     const [listing, setListing] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [shareLink, setShareLink] = useState(false)
+
     SwiperCore.use([Autoplay, Navigation, Pagination]);
 
     useEffect(()=> {
@@ -59,6 +62,26 @@ const Listing = () => {
                 </SwiperSlide>
                 ))}
             </Swiper>
+
+            <div 
+                className="fixed top-[13%] right-[3%] z-10 bg-white cursor-pointer rounded-full w-12 h-12 border-2 border-gray-400 flex justify-center items-center"
+                onClick={() => {
+                    navigator.clipboard.writeText(window.location.href)
+                    setShareLink(true)
+                    setTimeout(() => {
+                        setShareLink(false)
+                    }, 2000)
+                }} 
+            >
+                <FaShare className='text-lg text-slate-500'/>
+            </div>
+            {shareLink && (
+                <p
+                    className='fixed top-[25%] right-[7%] z-10 bg-white p-2 rounded-md border-2 border-gray-400'
+                >
+                    Link Copied
+                </p>
+            )}
         </main>
     )
 }
