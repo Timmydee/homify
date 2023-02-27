@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import homifys from '../assets/HomifyLogo.png'
 
 
 export default function  Header() {
@@ -30,11 +31,14 @@ export default function  Header() {
 
   return (
     <div className='bg-white border-b shadow-sm sticky top-0 z-50'>
-        <header className='flex justify-between items-center py-3 px-3 max-w-6xl mx-auto '>
+        <header className='flex justify-between items-center py-1 px-3 max-w-6xl mx-auto '>
             <div>
-                <img className='h-5 cursor-pointer' 
+                <img className='h-15 cursor-pointer w-[90px] ' 
                 onClick={() => navigate("/")}
-                src ='https://static.rdc.moveaws.com/images/logos/rdc-logo-default.svg' alt='logo-img'/>
+                src={homifys} alt="logo"
+                
+                // src ='https://static.rdc.moveaws.com/images/logos/rdc-logo-default.svg' alt='logo-img'
+                />
             </div>
 
             <div>
