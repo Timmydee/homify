@@ -26,6 +26,7 @@ import SwiperCore, {
 import "swiper/css/bundle";
 import { list } from 'firebase/storage';
 import Contact from '../Component/Contact';
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const Listing = () => {
     const auth = getAuth()
@@ -129,7 +130,7 @@ const Listing = () => {
                         <span className="font-semibold">Description - </span>
                         {listing.description}
                     </p>
-                    <ul className="flex mb-6 items-center space-x-2 sm:space-x-10 text-sm font-semibold mb-6">
+                    <ul className="flex items-center space-x-2 sm:space-x-10 text-sm font-semibold mb-6">
                         <li className="flex items-center whitespace-nowrap">
                             <FaBed className="text-lg mr-1" />
                         {   +listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed"}
@@ -164,7 +165,23 @@ const Listing = () => {
                     )}                
 
                 </div>
-                <div className="bg-blue-300 z-10 w-full h-[200px] lg-[400px]"></div>
+                <div className="z-10 h-[200px] md:h-[400px] md:ml-2 md:mt-0 mt-6 w-full">
+                <MapContainer 
+                    center={[listing.geolocation.lat, listing.geolocation.lng]} 
+                    zoom={13} scrollWheelZoom={false}
+                    style={{ height: "100%", width: "100%"}}
+                    >
+                    <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[listing.geolocation.lat, listing.geolocation.lng]}>
+                    <Popup>
+                        A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                    </Marker>
+                </MapContainer>
+                </div>
             
             </div>
 
