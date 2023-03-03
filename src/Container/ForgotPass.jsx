@@ -14,10 +14,6 @@ export default function ForgotPass() {
   function onChang(e) {
     console.log(e.target.value)
     setEmail(e.target.value)
-    // setFormData((prevState) => ({
-    //   ...prevState,
-    //   email: e.target.value, 
-    // }))
   }
 
   async function onSubmit(e) {
@@ -30,18 +26,6 @@ export default function ForgotPass() {
       toast.error("Could not send reset password");
     }
   }
-
-  // async function onSubmit(e){
-  //   e.preventDefault();
-  //   try{
-  //     const auth = getAuth();
-  //     await sendPasswordResetEmail(auth, email)
-  //     toast.success("Email was sent successfully")
-
-  //   } catch(error){
-  //     toast.error("Invalid Email Address")
-  //   }
-  // }
 
   return (
     <section>
