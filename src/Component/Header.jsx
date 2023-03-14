@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import homifys from '../assets/HomifyLogo.png'
+import {FaBars, FaTimes} from 'react-icons/fa'
 
 
 export default function  Header() {
@@ -9,8 +10,13 @@ export default function  Header() {
   const navigate = useNavigate();
   const auth = getAuth();
 
+  const[toggle, setToggle] = useState(false)
   const [page, setPage] = useState("SignIn")
   //console.log(location.pathname);
+
+  function handleClick() {
+    setToggle(!toggle)
+  }
 
   function pathMatch(route){
     if(route === location.pathname){
@@ -36,12 +42,10 @@ export default function  Header() {
                 <img className='h-15 cursor-pointer w-[90px] ' 
                 onClick={() => navigate("/")}
                 src={homifys} alt="logo"
-                
-                // src ='https://static.rdc.moveaws.com/images/logos/rdc-logo-default.svg' alt='logo-img'
                 />
             </div>
 
-            <div>
+            <div className='hidden sm:flex'>
                 <ul className='flex space-x-10'>
                     <li 
                         className={`py-3 text-sm font-semibold cursor-pointer text-gray-400 border-b-[3px] border-b-transparent
@@ -67,6 +71,41 @@ export default function  Header() {
                         {page}
                     </li>
                 </ul>
+            </div>
+            <div className='sm:hidden flex flex-1 justify-end items-center'>
+                <div onClick={handleClick} className="relative" >
+                    {!toggle ? <FaBars/> : <FaTimes/>}
+                </div>
+
+                {toggle &&
+                    <div className='absolute bg-white top-16 w-[30%] p-10'>
+                        <ul className='flex-col'>
+                            <li 
+                                className={`py-3 text-sm font-semibold cursor-pointer text-gray-400 border-b-[3px] border-b-transparent
+                                ${pathMatch("/") && "text-black border-b-red-500"}`}
+                                onClick={() => navigate("/")}
+                            >
+                                Home
+                            </li>
+
+                            <li 
+                                className={`py-3 text-sm font-semibold cursor-pointer text-gray-400 border-b-[3px] border-b-transparent
+                                ${pathMatch("/offers") && "text-black border-b-red-500"}`}
+                                onClick={() => navigate("/offers")}
+                            >
+                                offers
+                            </li>
+
+                            <li
+                                className={`py-3 text-sm font-semibold cursor-pointer text-gray-400 border-b-[3px] border-b-transparent 
+                                ${(pathMatch("/sign-in") || pathMatch("/profile")) && "text-black border-b-red-500"}`}
+                                onClick={() => navigate("/profile")}
+                            >
+                                {page}
+                            </li>
+                        </ul>
+                    </div>
+                }
             </div>
         </header>
     </div>

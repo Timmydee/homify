@@ -14,6 +14,7 @@ import PrivateRoute from "./Component/PrivateRoute";
 import CreateList from "./Container/CreateList";
 import EditListing from "./Container/EditListing";
 import Listing from "./Container/Listing";
+import CreateItem from "./Container/CreateItem"
 
 function App() {
   return (
@@ -34,6 +35,10 @@ function App() {
           <Route path='/category/:categoryName/:listingId' element={<Listing/>} />
           <Route path="/create-list" element={<PrivateRoute/>}>
             <Route path='/create-list' element={<CreateList/>} />
+          </Route>
+          
+          <Route path="/create-item" element={<PrivateRoute/>}>
+            <Route path='/create-item' element={<CreateItem/>} />
           </Route>
 
           <Route path="edit-listing" element={<PrivateRoute />}>

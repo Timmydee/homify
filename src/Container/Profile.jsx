@@ -79,6 +79,7 @@ export default function Profile() {
     }
     fetchUserListings();
   }, [auth.currentUser.uid]);
+  
   async function onDelete(listingID) {
     if (window.confirm("Are you sure you want to delete?")) {
       await deleteDoc(doc(db, "listings", listingID));
@@ -154,8 +155,25 @@ export default function Profile() {
               Sell or rent your home
             </Link>
           </button>
+          
+          {/* Sell item */}
+          <button
+            type="submit"
+            className="w-full mt-2 bg-green-600 text-white uppercase px-7 py-3 text-sm font-medium rounded shadow-md hover:bg-green-700 transition duration-150 ease-in-out hover:shadow-lg active:bg-blue-800"
+          >
+            <Link
+              to="/create-item"
+              className="flex justify-center items-center"
+            >
+              Sell Items
+            
+            </Link>
+
+          </button>
         </div>
       </section>
+
+
       <div className="max-w-6xl px-3 mt-6 mx-auto">
         {!loading && listings.length > 0 && (
           <>
