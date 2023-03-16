@@ -1,9 +1,9 @@
 import React from 'react'
-import home1 from '../assets/Bestcrib.png'
+import home1 from '../assets/Bestcrib.webp'
 
 const Home1 = () => {
   return (
-    <div className='bg-white h-[100%] max-w-9xl m-auto'>
+    <div className='bg-white h-[100%] max-w-1xl m-auto'>
       {/* <div className='md:flex-col p-5 items-center flex-col'> */}
       <div className='sm:grid sm:grid-cols-1 md:grid-cols-2 items-center p-5'>
         <div className='pt-12 pb-12'>

@@ -37,9 +37,9 @@ export default function  Header() {
 
   return (
     <div className='bg-white border-b shadow-sm sticky top-0 z-50'>
-        <header className='flex justify-between items-center py-2 px-2 max-w-6xl mx-auto '>
+        <header className='flex justify-between items-center py-3 md:py-4 px-2 max-w-6xl mx-auto '>
             <div>
-                <img className='h-15 cursor-pointer w-[90px] ' 
+                <img className='h-17 cursor-pointer w-[90px] ' 
                 onClick={() => navigate("/")}
                 src={homifys} alt="logo"
                 />
