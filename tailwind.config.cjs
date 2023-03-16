@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero': "url('assets/Bestcrib.png')",
+      },
+    },
   },
   plugins: [require('@tailwindcss/forms'),],
 }

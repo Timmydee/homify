@@ -1,10 +1,9 @@
 import { collection, getDocs, limit, query, getDoc, where, orderBy } from "firebase/firestore"
 import React, { useEffect, useState } from "react"
-import Slider from "../Component/Slider"
+import Slider from "./Slider"
 import { db } from "../firebase"
 import { Link } from 'react-router-dom'
-import ListingItem from "../Component/ListingItem"
-import Home1 from "./Home1"
+import ListingItem from "./ListingItem"
 
 
 export default function Home() {
@@ -99,9 +98,8 @@ export default function Home() {
 
   return (
     <div>
-      {/* <Slider /> */}
-      <Home1 />
-      {/* <div className="max-w-6xl mx-auto pt-4 space-y-6">
+      <Slider />
+      <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {offerListing && offerListing.length > 0 && (
           <div className="m-2 mb-6">
             <h2 className="px-3 text-2xl mt-6 font-semibold">Recent Offers</h2>
@@ -119,7 +117,7 @@ export default function Home() {
             </ul>
           </div>
       )}
-      </div> */}
+      </div>
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {rentListing && rentListing.length > 0 && (
           <div className="m-2 mb-6">
