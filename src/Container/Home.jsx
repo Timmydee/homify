@@ -101,10 +101,10 @@ export default function Home() {
     <div>
       <Slider />
       <Home1 />
-      <div className="max-w-6xl mx-auto pt-4 space-y-6">
+      <div className="max-w-6xl mx-auto pt-6 space-y-6">
         {offerListing && offerListing.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Recent Offers</h2>
+            <h2 className="px-3 text-4xl mt-6 font-semibold text-red-700">Recent Offers</h2>
             <Link to = '/offers'>
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">Show more offers</p>
             </Link>
@@ -123,7 +123,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {rentListing && rentListing.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Places for Rent</h2>
+            <h2 className="px-3 text-4xl mt-6 text-red-700 font-semibold">Places for Rent</h2>
             <Link to = '/category/rent'>
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">Show more places for rent</p>
             </Link>
@@ -142,7 +142,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {saleListing && rentListing.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Places for Sale</h2>
+            <h2 className="px-3 text-4xl mt-6 font-semibold text-red-700">Places for Sale</h2>
             <Link to = '/category/sale'>
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">Show more places for sale</p>
             </Link>
