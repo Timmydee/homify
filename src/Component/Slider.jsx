@@ -50,7 +50,7 @@ const Slider = () => {
     return (
         listings && 
         <div>
-            <Swiper
+            {/* <Swiper
                 slidesPerView={1}
                 navigation
                 pagination={{type: "progressbar"}}
@@ -76,7 +76,7 @@ const Slider = () => {
                     </SwiperSlide>
                     
                 ))}
-            </Swiper>
+            </Swiper> */}
         </div>
     )
 }

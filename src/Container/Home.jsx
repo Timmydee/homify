@@ -99,7 +99,7 @@ export default function Home() {
 
   return (
     <div>
-      {/* <Slider /> */}
+      <Slider />
       <Home1 />
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {offerListing && offerListing.length > 0 && (
