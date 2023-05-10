@@ -83,7 +83,10 @@ export default function  Header() {
                             <li 
                                 className={`py-3 text-sm font-semibold cursor-pointer text-gray-400 border-b-[3px] border-b-transparent
                                 ${pathMatch("/") && "text-black border-b-red-500"}`}
-                                onClick={() => navigate("/")}
+                                onClick = { () => {
+                                    navigate("/")
+                                    setToggle(false)
+                                }}
                             >
                                 Home
                             </li>
@@ -91,7 +94,8 @@ export default function  Header() {
                             <li 
                                 className={`py-3 text-sm font-semibold cursor-pointer text-gray-400 border-b-[3px] border-b-transparent
                                 ${pathMatch("/offers") && "text-black border-b-red-500"}`}
-                                onClick={() => navigate("/offers")}
+                                onClick={() => { navigate("/offers"); setToggle(false); } } 
+                                
                             >
                                 offers
                             </li>
@@ -99,7 +103,7 @@ export default function  Header() {
                             <li
                                 className={`py-3 text-sm font-semibold cursor-pointer text-gray-400 border-b-[3px] border-b-transparent 
                                 ${(pathMatch("/sign-in") || pathMatch("/profile")) && "text-black border-b-red-500"}`}
-                                onClick={() => navigate("/profile")}
+                                onClick={() => { navigate("/profile"); setToggle(false);}}
                             >
                                 {page}
                             </li>
