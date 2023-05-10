@@ -108,12 +108,13 @@ export default function Home() {
             <Link to = '/offers'>
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">Show more offers</p>
             </Link>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-4" >
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-4 mx-8" >
               {offerListing.map(listing => (
                 <ListingItem 
                   key={listing.id}
                   listing={listing.data}
                   id = {listing.id}
+                  
                 />
               ))}
             </ul>
@@ -127,7 +128,7 @@ export default function Home() {
             <Link to = '/category/rent'>
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">Show more places for rent</p>
             </Link>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-4" >
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-4 mx-8" >
               {rentListing.map(listing => (
                 <ListingItem 
                   key={listing.id}
@@ -146,7 +147,7 @@ export default function Home() {
             <Link to = '/category/sale'>
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">Show more places for sale</p>
             </Link>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-4" >
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-4 mx-8" >
               {saleListing.map(listing => (
                 <ListingItem 
                   key={listing.id}
