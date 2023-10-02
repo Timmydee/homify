@@ -23,9 +23,9 @@ function App() {
         <Header />
         <Routes>      
           <Route path="/" element={<Home />} />
-          {/* route the privateRoute with profile, so it passes through proute first */}
+          {/* route the privateRoute with profile, so it passes through route first */}
           <Route path="/profile" element={<PrivateRoute />}>
-            <Route path='/profile' element={<Profile/>} />
+            <Route path='/profile' element={<Profile />} />
           </Route>      
           
           <Route path='/sign-in' element={<SignIn />} />

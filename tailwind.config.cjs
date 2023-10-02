@@ -4,6 +4,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      display: ["Merriweather", "serif"],
+    },
     extend: {
       backgroundImage: {
         'hero': "url('assets/Bestcrib.png')",
