@@ -42,7 +42,7 @@ const Home1 = () => {
           <h4 className="font-medium font-serif text-sm md:text-start md:text-sm text-red-500">
             Who we are
           </h4>
-          <h1 className="font-bold font-display text-4xl md:text-start md:text-6xl text-[#091638] pt-4">
+          <h1 className="font-bold font-display text-4xl md:text-start md:text-4xl text-[#091638] pt-4">
             Assisting individuals in locating the appropriate real estate.
           </h1>
           <p className="text-1xl md:text-[16px] font-display lg:w-[70%] text-[#808080] font-md md:text-start pt-4">
@@ -52,7 +52,7 @@ const Home1 = () => {
           </p>
 
           <div className="mt-[2rem]">
-            <div className="lg:w-[400px] w-[310px] h-[91px] bg-white shadow-2xl rounded-lg flex justify-between items-center space-x-4 py-4 px-4">
+            <div className="lg:w-[400px] w-full h-[91px] bg-white shadow-2xl rounded-lg flex justify-between items-center space-x-4 py-4 px-4">
               <div>
                 <BiHome size={30} color="red" />
               </div>
@@ -66,7 +66,7 @@ const Home1 = () => {
               </div>
             </div>
 
-            <div className="lg:w-[400px] w-[310px] bg-white shadow-2xl rounded-lg flex justify-between items-center space-x-4 py-4 px-4 mt-6">
+            <div className="lg:w-[400px] w-full bg-white shadow-2xl rounded-lg flex justify-between items-center space-x-4 py-4 px-4 mt-6">
               <div>
                 <BiHome size={30} color="red" />
               </div>
@@ -84,7 +84,7 @@ const Home1 = () => {
           </div>
         </div>
         <div className="flex justify-center items-center lg:pt-0 pt-6">
-          <div className="pt-6">
+          <div className="pt-14">
             <img src={about1} className="w-full" />
           </div>
           <div className="">
