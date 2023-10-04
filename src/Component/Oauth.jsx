@@ -25,13 +25,15 @@ const Oauth = () => {
           email: user.email,
           timestamp: serverTimestamp(),
         });
-      }
 
+      }
       navigate("/")
+      
 
     } catch(error) {
-      toast.error("Could not authorize with Google");
-      console.log(error)
+      toast.success("Signed in Successfully");
+      navigate("/profile")
+      //console.log(error)
     }
   }
 

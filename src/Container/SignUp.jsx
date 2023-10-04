@@ -67,8 +67,8 @@ export default function SignUp() {
   }
 
   return (
-    <section>
-      <h1 className='text-3xl text-center mt-6 font-bold'>Sign Up</h1>
+    <section className='font-display'>
+      <h1 className='text-4xl text-center mt-6 font-bold'>Sign Up</h1>
       <div className='flex justify-center mt-6 flex-wrap items-center px-4'>
         <div className='md:w-[57%] lg:w-[40%] mb-12 md:mb-6'>
           <img 

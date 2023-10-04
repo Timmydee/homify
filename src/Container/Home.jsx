@@ -5,6 +5,7 @@ import { db } from "../firebase"
 import { Link } from 'react-router-dom'
 import ListingItem from "../Component/ListingItem"
 import Home1 from "./Home1"
+import Footer from "../Component/Footer"
 
 
 export default function Home() {
@@ -163,6 +164,7 @@ export default function Home() {
           </div>
       )}
       </div>
+      <Footer />
     </div>
   )
 }
