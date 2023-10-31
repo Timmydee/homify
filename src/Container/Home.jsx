@@ -68,6 +68,7 @@ export default function Home() {
       }
     fetchListings()
   }, [])
+  
   //place for rent
   const [saleListing, setSale] = useState(null)
 
